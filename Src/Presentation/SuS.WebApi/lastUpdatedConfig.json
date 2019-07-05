@@ -1,0 +1,11 @@
+{
+  "Services": [
+    {
+      "Name": "BMW_SUPPLIERS",
+      "AdditionalInformation": "SuS - DB - testing",
+      "GatewayEndpoint": "Host=82.165.121.30;Port=5444;Database=BMW_SUPPLIERS;Username=postgres;Password=S4hENnzpycXEpPDS"
+    }
+  ],
+  "Jobs": [],
+  "Parameter": []
+}

@@ -1,0 +1,25 @@
+FROM microsoft/dotnet:2.1-sdk AS builder
+
+WORKDIR /sln
+
+#copy the solution file 
+COPY ./Launch-Database-Backend.sln ./
+
+#copy everything
+COPY ./ .
+
+WORKDIR ./Src/Presentation/LD.WebApi
+
+#build projects and restore packages
+RUN dotnet restore
+
+RUN dotnet build -c Release --no-restore
+
+RUN dotnet publish -c Release -o "/sln/dist" --no-restore
+
+FROM microsoft/dotnet:2.1-aspnetcore-runtime
+ARG source
+WORKDIR /app
+COPY --from=builder /sln/dist .
+ENTRYPOINT ["dotnet", "LD.WebApi.dll"]
+

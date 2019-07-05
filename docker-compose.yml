@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Testing
+      - ASPNETCORE_URLS=http://+:80 
+    ports:
+      - "10100:5000"
+    volumes:
+      - ./wwwroot:/app/wwwroot
+
